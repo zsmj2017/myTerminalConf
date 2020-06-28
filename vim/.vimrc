@@ -10,7 +10,6 @@ set scrolloff=2
 set showmatch
 set shiftwidth=4
 set tabstop=4
-set showmatch
 set cursorline
 set autoread
 set mouse=a
@@ -30,8 +29,8 @@ let g:ycm_complete_in_strings=1
 let g:ycm_key_invoke_completion = '<c-z>'
 set completeopt=menu,menuone
 " 设定补全区域颜色
-highlight PMenu ctermfg=242 ctermbg=242 guifg=black guibg=darkgrey
-highlight PMenuSel ctermfg=1 ctermbg=8 guifg=darkgrey guibg=black
+highlight PMenu ctermfg=15 ctermbg=242 guifg=#ffffff guibg=#000000
+highlight PMenuSel ctermfg=1 ctermbg=8 guifg=#ffffff guibg=#000000
 noremap <c-z> <NOP>
 
 let g:ycm_semantic_triggers =  {
@@ -48,7 +47,7 @@ let g:ycm_filetype_whitelist = {
 		    \ "zimbu":1,
 		    \ }
 Plug 'https://github.com/scrooloose/nerdtree'
-nnoremap <F3> :NERDTreeToggle<CR>                          # 按F3显示或隐藏目录
+nnoremap <F3> :NERDTreeToggle<CR><ESC>                          # 按F3显示或隐藏目录
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 Plug 'Chiel92/vim-autoformat'
 nnoremap <F6> :Autoformat<CR>   # 按F6自动格式化
@@ -71,6 +70,9 @@ let g:gutentags_cache_dir = s:vim_tags
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+let g:gutentags_auto_add_gtags_cscope = 0
 
 " 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
@@ -95,8 +97,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 " 需要手动指定编译器路径
-let g:ale_c_gcc_executable = '/usr/bin/gcc'
-let g:ale_cpp_gcc_executable = '/usr/bin/g++'
+let g:ale_c_gcc_executable = '/usr/bin/clang'
+let g:ale_cpp_gcc_executable = '/usr/bin/clang++'
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
