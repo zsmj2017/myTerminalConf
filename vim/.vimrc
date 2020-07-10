@@ -13,6 +13,7 @@ set tabstop=4
 set cursorline
 set autoread
 set mouse=a
+set bs=2
 
 set tags=./.tags;,.tags
 
@@ -30,7 +31,7 @@ let g:ycm_key_invoke_completion = '<c-z>'
 set completeopt=menu,menuone
 " 设定补全区域颜色
 highlight PMenu ctermfg=15 ctermbg=242 guifg=#ffffff guibg=#000000
-highlight PMenuSel ctermfg=1 ctermbg=8 guifg=#ffffff guibg=#000000
+highlight PMenuSel ctermfg=8 ctermbg=15 guifg=#000000 guibg=#ffffff
 noremap <c-z> <NOP>
 
 let g:ycm_semantic_triggers =  {
@@ -47,10 +48,12 @@ let g:ycm_filetype_whitelist = {
 		    \ "zimbu":1,
 		    \ }
 Plug 'https://github.com/scrooloose/nerdtree'
-nnoremap <F3> :NERDTreeToggle<CR><ESC>                          # 按F3显示或隐藏目录
+" 按F3显示或隐藏目录
+noremap <F3> :NERDTreeToggle <CR>                          
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 Plug 'Chiel92/vim-autoformat'
-nnoremap <F6> :Autoformat<CR>   # 按F6自动格式化
+" 按F6自动格式化
+noremap <F6> :Autoformat<CR>  
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
@@ -84,8 +87,8 @@ let g:asyncrun_open = 6
 " 任务结束时候响铃提醒
 let g:asyncrun_bell = 1
 " 设置 F10 打开/关闭 Quickfix 窗口
-nnoremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
-nnoremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <CR>
+noremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
+noremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <CR>
 Plug 'dense-analysis/ale'
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
