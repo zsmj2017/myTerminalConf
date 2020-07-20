@@ -9,8 +9,8 @@ set smartindent
 set scrolloff=2
 set showmatch
 set shiftwidth=4
-set tabstop=4
 set cursorline
+set tabstop=4 shiftwidth=4 expandtab
 set autoread
 set mouse=a
 set bs=2
@@ -90,6 +90,8 @@ let g:asyncrun_bell = 1
 noremap <F10> :call asyncrun#quickfix_toggle(6)<CR>
 noremap <silent> <F9> :AsyncRun gcc -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <CR>
 Plug 'dense-analysis/ale'
+" F4打开ale preview窗口
+noremap <F4> :ALEDetail <CR>                          
 let g:ale_linters_explicit = 1
 let g:ale_completion_delay = 500
 let g:ale_echo_delay = 20
@@ -100,8 +102,8 @@ let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
 " 需要手动指定编译器路径
-let g:ale_c_gcc_executable = '/usr/bin/clang'
-let g:ale_cpp_gcc_executable = '/usr/bin/clang++'
+let g:ale_c_gcc_executable = '/usr/bin/gcc'
+let g:ale_cpp_gcc_executable = '/usr/bin/g++'
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
@@ -120,5 +122,6 @@ let g:lightline = {
        \ 'colorscheme': 'one',
        \ }
 set laststatus=2
+Plug 'Yggdroot/indentLine'
 call plug#end()            
 filetype plugin indent on    
