@@ -1,2 +1,2 @@
-# vimrc
-My Vim Configuration
+# myTerminalConf
+My Terminal Configuration
